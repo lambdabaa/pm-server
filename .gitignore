@@ -1,0 +1,11 @@
+
+.DS_Store
+Gemfile.lock
+*.log
+
+/app/assets
+/app/mailers
+/app/views
+/log
+/public
+/tmp
