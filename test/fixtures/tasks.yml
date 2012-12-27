@@ -4,3 +4,4 @@ one:
   creator_id: 2
   title: Do the laundry
   description: We need clean socks
+  state: 1

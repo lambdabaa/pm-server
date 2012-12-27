@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20121224173324) do
     t.date     "day"
     t.time     "time"
     t.integer  "priority"
-    t.integer  "status"
+    t.integer  "state"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

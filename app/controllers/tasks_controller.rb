@@ -24,8 +24,27 @@ class TasksController < ApplicationController
   end
 
   def update
-    # TODO(gareth)
-    render :text => '400'
+    id = request.path_parameters[:id]
+    task = Task.find(id)
+    params.each_pair do |k, v|
+      case k
+      when 'title'
+        task.title = v
+      when 'description'
+        task.description = v
+      when 'day'
+        task.day = v
+      when 'time'
+        task.time = v
+      when 'priority'
+        task.priority = v
+      when 'state'
+        task.state = v
+      end
+    end
+
+    task.save
+    render :text => '200'
   end
 
   def destroy
