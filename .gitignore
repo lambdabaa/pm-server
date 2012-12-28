@@ -7,5 +7,4 @@ Gemfile.lock
 /app/mailers
 /app/views
 /log
-/public
 /tmp

@@ -1,0 +1,39 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JobCat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body onload="pm.App.init()">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="well sidebar-nav">
+          <ul class="nav nav-list">
+            <li class="nav-header">What's next</li>
+            <li><a href="#!/dashboard"><i class="icon-home"></i> Dashboard</a></li>
+            <li><a href="#!/profile"><i class="icon-user"></i> My Profile</a></li>
+            <li><a href="#!/calendar"><i class="icon-calendar"></i> Calendar</a></li>
+            <li><a href="#!/progress"><i class="icon-signal"></i> Progress <span class="label label-success">New!</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content span9"></div>
+    </div>
+
+    <hr>
+    <footer>
+      <p>© JobCat 2012</p>
+    </footer>
+  </div>
+
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script src="path.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
