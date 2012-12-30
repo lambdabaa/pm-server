@@ -28,10 +28,8 @@ class TasksController < ApplicationController
     task = Task.find(id)
     params.each_pair do |k, v|
       case k
-      when 'title'
-        task.title = v
-      when 'description'
-        task.description = v
+      when 'body'
+        task.body = v
       when 'day'
         task.day = v
       when 'time'
@@ -48,7 +46,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    # TODO(gareth)
-    render :text => '400'
+    id = request.path_parameters[:id]
+    task = Task.find(id)
+    task.destroy
+    render :text => '200'
   end
 end

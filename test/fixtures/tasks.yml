@@ -2,6 +2,5 @@
 one:
   id: 1
   creator_id: 2
-  title: Do the laundry
-  description: We need clean socks
+  body: Do the laundry... we need clean socks
   state: 1

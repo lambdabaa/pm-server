@@ -52,21 +52,19 @@ ActiveRecord::Schema.define(:version => 20121224173324) do
 
   create_table "tasks", :force => true do |t|
     t.integer  "creator_id"
-    t.string   "title"
-    t.text     "description"
+    t.text     "body"
     t.date     "day"
     t.time     "time"
     t.integer  "priority"
     t.integer  "state"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "tasks", ["creator_id"], :name => "index_tasks_on_creator_id"
   add_index "tasks", ["day"], :name => "index_tasks_on_day"
   add_index "tasks", ["priority"], :name => "index_tasks_on_priority"
   add_index "tasks", ["time"], :name => "index_tasks_on_time"
-  add_index "tasks", ["title"], :name => "index_tasks_on_title"
 
   create_table "users", :force => true do |t|
     t.string   "first"

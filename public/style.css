@@ -6,7 +6,7 @@ body {
   background-color: #eeeeee;
 }
 .task-group {
-  padding-bottom: 300px;
+  padding-bottom: 200px;
 }
 .task {
   -webkit-border-radius: 5px;
@@ -29,6 +29,25 @@ body {
 }
 .task-done {
   background-color: #46a546;
+}
+.task-edit-button {
+  cursor: pointer;
+  cursor: hand;
+  float: right;
+  margin: 4px;
+}
+.task-delete-button {
+  cursor: pointer;
+  cursor: hand;
+  float: right;
+  margin: 4px;
+}
+.modal textarea {
+  margin: 10px auto;
+  width: 90%;
+}
+.dashboard-controls {
+  clear: both;
 }
 .calendar td {
   width: 120px;
