@@ -9,8 +9,24 @@ class TasksController < ApplicationController
   end
 
   def create
-    # TODO(gareth)
-    render :text => '400'
+    @task = Task.new
+    params.each_pair do |k, v|
+      case k
+      when 'body'
+        @task.body = v
+      when 'day'
+        @task.day = v
+      when 'time'
+        @task.time = v
+      when 'priority'
+        @task.priority = v
+      when 'state'
+        @task.state = v
+      end
+    end
+
+    @task.save
+    render :json => @task
   end
 
   def show
@@ -24,31 +40,29 @@ class TasksController < ApplicationController
   end
 
   def update
-    id = request.path_parameters[:id]
-    task = Task.find(id)
+    @task = Task.find(request.path_parameters[:id])
     params.each_pair do |k, v|
       case k
       when 'body'
-        task.body = v
+        @task.body = v
       when 'day'
-        task.day = v
+        @task.day = v
       when 'time'
-        task.time = v
+        @task.time = v
       when 'priority'
-        task.priority = v
+        @task.priority = v
       when 'state'
-        task.state = v
+        @task.state = v
       end
     end
 
-    task.save
+    @task.save
     render :text => '200'
   end
 
   def destroy
-    id = request.path_parameters[:id]
-    task = Task.find(id)
-    task.destroy
+    @task = Task.find(request.path_parameters[:id])
+    @task.destroy
     render :text => '200'
   end
 end
