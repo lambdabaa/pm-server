@@ -3,11 +3,18 @@ require 'spec_helper'
 
 describe TasksController do
   fixtures :tasks
+  fixtures :users
 
   context 'GET index' do
+    before(:each) do
+      @task = tasks(:one)
+      @user = users(:alison)
+      controller.stub(:current_user).and_return(@user)
+    end
+
     it 'should return a json array of all the objects' do
       get :index
-      hash = JSON.parse(tasks(:one).to_json)
+      hash = JSON.parse(@task.to_json)
       JSON.parse(response.body).include?(hash).should be_true
     end
   end
@@ -25,6 +32,8 @@ describe TasksController do
   context 'GET show' do
     before(:each) do
       @task = tasks(:one)
+      @user = users(:alison)
+      controller.stub(:current_user).and_return(@user)
     end
 
     it 'should return a json object with the parameter id' do
