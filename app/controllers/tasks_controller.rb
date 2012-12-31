@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
+  before_filter :authenticate
+  before_filter :find_task, :only => [:show, :edit, :update, :destroy]
+
   def index
-    @tasks = Task.all
+    @tasks = Task.where(:creator_id => @user.id)
     render :json => @tasks
   end
 
@@ -10,6 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new
+    @task.creator = @user
     params.each_pair do |k, v|
       case k
       when 'body'
@@ -30,8 +34,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    # TODO(gareth): Task not found
-    @task = Task.find(params[:id])
     render :json => @task
   end
 
@@ -40,7 +42,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(request.path_parameters[:id])
     params.each_pair do |k, v|
       case k
       when 'body'
@@ -61,8 +62,31 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(request.path_parameters[:id])
     @task.destroy
     render :text => '200'
+  end
+
+  private
+
+  def authenticate
+    @user = current_user
+    p @user
+    if !@user
+      return render :text => '401'
+    end
+  end
+
+  def find_task
+    task_id = params[:id] || request.path_parameters[:id]
+    if !task_id
+      return render :text => '400'
+    end
+
+    @task = Task.find(task_id)
+    if !@task
+      return render :text => '404'
+    elsif @task.creator != @user
+      return render :text => '401'
+    end
   end
 end

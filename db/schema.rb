@@ -70,11 +70,17 @@ ActiveRecord::Schema.define(:version => 20121224173324) do
     t.string   "first"
     t.string   "last"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "image_url"
+    t.string   "facebook_id"
+    t.text     "facebook_me"
+    t.string   "facebook_token"
+    t.string   "facebook_token_expiration"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
   add_index "users", ["first"], :name => "index_users_on_first"
   add_index "users", ["last"], :name => "index_users_on_last"
 
