@@ -32,9 +32,8 @@
     </footer>
   </div>
 
-  <script src="jquery.min.js"></script>
-  <script src="bootstrap.min.js"></script>
-  <script src="path.min.js"></script>
-  <script>var d,e;d=document;e=d.createElement('script');e.type='text/javascript';e.src=(window.location.host=='localhost:8080')?'http://localhost:9810/compile/?id=pm':'main.js';d.body.appendChild(e);</script>
+  <script type="text/javascript">var asyncLoad=function(s) { var d,e;d=document;e=d.createElement('script');e.type='text/javascript';e.async=true;e.src=s;d.body.appendChild(e); }</script>
+  <script async type="text/javascript" src="jquery.min.js" onload="asyncLoad('bootstrap.min.js')"></script>
+  <script async type="text/javascript" src="path.min.js" onload="asyncLoad(window.location.host=='localhost:8080'?'http://localhost:9810/compile/?id=pm':'main.js')"></script>
 </body>
 </html>
