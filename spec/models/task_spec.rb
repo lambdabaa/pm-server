@@ -3,6 +3,7 @@ require 'spec_helper'
 
 describe Task do
   fixtures :assignments
+  fixtures :categorizations
   fixtures :comments
   fixtures :tags
   fixtures :tasks
@@ -38,6 +39,7 @@ describe Task do
 
   context 'when the task is tagged' do
     before(:each) do
+      @categorization = categorizations(:one)
       @tag = tags(:laundry)
       @task = tasks(:one)
     end

@@ -49,6 +49,7 @@ describe TasksController do
   context 'DELETE destroy' do
     before(:each) do
       @task = tasks(:one)
+      request.stub(:path_parameters).and_return({ :id => @task.id })
     end
 
     it 'should remove the object from the database' do
